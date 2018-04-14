@@ -1,0 +1,79 @@
+.btns {
+  display: flex;
+  height: 90rpx;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.btns .nav_btn {
+  flex-shrink: 0;
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background-color: #fff;
+  color: #333333;
+  font-size: 34rpx;
+  border-bottom: 4rpx solid #ffffff;
+}
+
+.btns .nav_btn.selected {
+border-bottom: 4rpx solid #36b9af;
+  color: #36b9af;
+}
+
+.user-box{
+   padding: 30rpx 0;
+}
+.user-avatar{
+    float: left;
+    width:100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.user-name{
+    font-size: 45rpx;
+    line-height: 45rpx;
+}
+.user-signature{
+    width:180prx;
+    overflow: hidden;
+    font-size: 25rpx;
+    margin-top: 20rpx;
+    color: #999;
+}
+.gender-icon{
+    width:15px;
+    height:15px;
+    margin-left: 5px;
+}
+.user-content{
+    border-top: 1px solid #eee;
+    padding: 30rpx 0 10rpx 0;
+}
+.user-content-item{
+    float: left;
+    width: 33.33%;
+    text-align: center;
+}
+
+.list-box{
+    
+}
+.list-item{
+    border-bottom: 1px solid #eee;
+    padding: 20rpx 0rpx;
+    font-size: 35rpx;
+}
+.list-last-child{
+    
+    border:none;
+}
+
+.list-icon{
+    width:50rpx;
+    height: 50rpx;
+    margin-right: 20rpx;
+}

@@ -1,0 +1,77 @@
+<import src="../../wxParse/wxParse.wxml" />
+<import src="../../templates/header.wxml" />
+<import src="../../templates/copyright.wxml" />
+
+<view class="container">
+	<view class="section">
+    <checkbox-group>
+		<view class="menu-item">
+            <view class="menu-text">
+              <text>备选时间1：</text>
+            	<text>{{detail.startDate}} {{detail.startTime}}</text>
+              <checkbox  value="key1" checked="true"class='checkbox-date'/>
+            </view>
+    </view>
+    		<view class="menu-item">
+            <view class="menu-text">
+              <text>备选时间2：</text>
+            	<text>{{detail.startDate}} {{detail.startTime}}</text>
+              <checkbox  value="key2" class='checkbox-date'/>
+            </view>
+    </view>
+    		<view class="menu-item">
+            <view class="menu-text">
+              <text>备选时间3：</text>
+            	<text>{{detail.startDate}} {{detail.startTime}}</text>
+              <checkbox  value="key3" class='checkbox-date'/>
+            </view>
+    </view>
+    		<view class="menu-item">
+            <view class="menu-text">
+              <text>备选时间4：</text>
+            	<text>{{detail.startDate}} {{detail.startTime}}</text>
+              <checkbox  value="key4" class='checkbox-date'/>
+            </view>
+    </view>
+		<view class="menu-item">
+            <view class="menu-text">
+            <text>活动地址：</text>
+            	<text  bindtap="openLocation">{{detail.address}}</text>
+            </view>
+    </view>
+    </checkbox-group>  
+		<view class="menu-item">
+            <view class="menu-text">
+              <text>活动费用：</text>
+            	<text  bindtap="openLocation">{{detail.money}}</text>
+            </view>
+    </view>
+	</view>
+	<view class="section">
+		<view class="section-title">活动备注</view>
+		<view class="m-t-10 text">
+      <text>{{detail.Note}}</text>
+		</view>
+	</view>
+  <view class="section">
+		<view class="section-title">
+      报名记录(点击查看详情)
+    </view>
+    <!--<view class="list-box clearfix" wx:for="{{postsList}}">-->
+      <view class="m-t-10 text">
+        <image class="list-avatar" src="{{detail.avatar}}"></image>
+        <image class="list-avatar" src="{{detail.avatar2}}"></image>
+        <image class="list-avatar" src="{{detail.avatar3}}"></image>
+      </view>
+      <view class="list-layer"  bindtap="regDetial" data-id="1"></view>
+	</view>
+
+	<view class="section">
+    <block wx:if="{{isSignUp}}">
+      <button type="primary" bindtap="unJoin">取消报名</button>
+    </block>
+    <block wx:else>
+      <button type="primary" bindtap="join">我要报名</button>
+    </block>
+	</view>
+</view>

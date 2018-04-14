@@ -1,0 +1,141 @@
+ <form bindsubmit="formSubmit" bindreset="formReset">
+<view class="container bg">
+      <!-- 置顶图片-->
+      <view class="banner">
+        <image class="" src="/image/zuqiu.png" mode="aspectFill"></image>
+      </view>
+      <view class="section">
+          <view class="menu">
+            <!-- 活动分类-->
+              <view class="menu-item">
+                  <image class="menu-icon" src="/image/about.png"></image>
+                  <view class="menu-text">
+                    <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+                        <text>{{array[index]}}</text>
+                    </picker>
+                  </view>
+              </view>
+              <!-- 标题-->
+              <view class="menu-item">
+                  <image class="menu-icon" src="/image/theme.png"></image>
+                  <view class="menu-text">
+                      <input bindinput="bindTitle" class="section-input input" type="text" 
+                          value="" placeholder="活动主题(可为空)" value="{{theme}}" autofocus name="theme">
+                      </input>
+                  </view>
+              </view>
+              <!--日期-->
+              <view class="menu-item">
+               <view class="menu-text">
+                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                          <image class="menu-icon" src="/image/time.png"></image>
+                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <view class="hide">
+                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
+                              </view>                 
+
+                  </picker>
+                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
+                              <text class="vm m-l-10">{{startTime}}</text>
+                              <view class="hide">
+                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
+                      </view>
+                  </picker>
+                  <view style="float: right;">
+                    <button type="primary" size="mini" bindtap="insertbeixuan" style="{{display == '3' ? 'display: none': ''}}">备选日期</button> 
+                  </view>
+                </view>
+
+                <view id='beixun1' class="menu-text" style="{{display >= '1' ? '': 'display: none'}}">
+                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                          <image class="menu-icon" src="/image/time.png"></image>
+                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <view class="hide">
+                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
+                              </view>                 
+
+                  </picker>
+                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
+                              <text class="vm m-l-10">{{startTime}}</text>
+                              <view class="hide">
+                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
+                      </view>
+                  </picker>
+                </view>
+
+                 <view id='beixun2' class="menu-text" style="{{display >= '2' ? '': 'display: none'}}">
+                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                          <image class="menu-icon" src="/image/time.png"></image>
+                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <view class="hide">
+                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
+                              </view>                 
+
+                  </picker>
+                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
+                              <text class="vm m-l-10">{{startTime}}</text>
+                              <view class="hide">
+                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
+                      </view>
+                  </picker>
+                </view>
+
+                 <view id='beixun3' class="menu-text" style="{{display >= '3' ? '': 'display: none'}}">
+                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                          <image class="menu-icon" src="/image/time.png"></image>
+                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <view class="hide">
+                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
+                              </view>                 
+
+                  </picker>
+                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
+                              <text class="vm m-l-10">{{startTime}}</text>
+                              <view class="hide">
+                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
+                      </view>
+                  </picker>
+                </view>
+
+              </view>
+              <!--活动地址-->
+              <view class="menu-item">
+                  <image class="menu-icon" src="/image/address.png"></image>
+                  <view class="menu-text">
+                      <input bindtap="chooseLocation" class="section-input input" 
+                          type="text" value="" placeholder="活动地址" 
+                          value="{{address}}">
+                      </input>
+                  </view>
+              </view>
+              <!--活动费用-->
+              <view class="menu-item">
+                  <image class="menu-icon" src="/image/money.png"></image>
+                  <view class="menu-text">
+                      <input bindinput="bindMoney" type="number" value="{{money}}" 
+                          name="money" placeholder="费用">
+                      </input>
+                  </view>
+              </view>
+          </view>
+      </view>
+      <!--活动描述-->
+      <view class="section">
+          <view class="menu">
+              <view class="menu-item">
+                  <image class="menu-icon" src="/image/text.png"></image>
+                  <view class="menu-text">
+                      <text class="vm">活动备注</text>
+                  </view>
+                  <view class="m-t-5">
+                      <textarea bindinput="bindContent" value="{{content}}" placeholder="说点什么吧(可为空)"></textarea>
+                  </view>
+              </view>            
+          </view>
+      </view>
+      <!--提交-->
+      <view class="section">
+          <button class="" type="primary" form-type="submit">提交</button>
+      </view>
+</view>
+  </form>

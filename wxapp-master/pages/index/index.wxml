@@ -1,0 +1,12 @@
+  <view class="section">
+		<view class="section-title">
+      报名记录
+    </view>
+    <!--<view class="list-box clearfix" wx:for="{{postsList}}">-->
+      <view class="m-t-10 text">
+<image class="list-avatar" src="{{detail.avatar}}"></image>
+<image class="list-avatar" src="{{detail.avatar2}}"></image>
+<image class="list-avatar" src="{{detail.avatar3}}"></image>
+      </view>
+    <!--</view>-->
+	</view>
