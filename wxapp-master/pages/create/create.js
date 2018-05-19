@@ -221,7 +221,7 @@ Page({
 
           var data = {
             userInfo: {
-              "userId": 'orY0a0dC4iGFsH40aZWTn4TwcFS4'
+              "userId": app.globalData.openid
             },
             requestInfo: {
               "eventName": this.data.eventName,
