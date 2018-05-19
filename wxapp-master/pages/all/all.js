@@ -4,21 +4,16 @@ import config from '../../utils/config'
 import wxApi from '../../es6-promise/utils/wxApi'
 import wxRequest from '../../es6-promise/utils/wxRequest'
 
-var data = require('../../data/data.js');
 var app = getApp();
 Page({
   data: {
-    postsList: data.list,
-    postsShowSwiperList: [],
-    isLastPage: false,
-    page: 1,
-    categories: 0,
-    showerror: false,
+    postsList:[],
     showallDisplay: false,
     displayHeader: false,
     displaySwiper: false,
-    floatDisplay: false,
-    userinfo:[]
+    userinfo:[],
+    openid:'',
+    select: '',
   },
   onShareAppMessage: function () {
     return {
@@ -34,170 +29,69 @@ Page({
   },
   onPullDownRefresh: function () {
     this.setData({
-      showerror: false,
       displaySwiper: false,
-      floatDisplay: false,
-      isLastPage: false,
-      page: 1,
-      postsShowSwiperList: []
     });
     this.fetchTopFivePosts();
   },
   onReachBottom: function () { },
   onLoad: function (options) {
-    this.fetchTopFivePosts();
+    console.log('onLoad')
+    var that = this;
+    if ("create" === options.status){
+      this.setData({
+        select: 'create',
+      });
+    }
+    //调用应用实例的方法获取全局数据
+    app.getuserID(function (openid) {
+      //更新数据
+      that.setData({
+        openid: openid
+      })
+      that.getList();
+    });
   },
-  fetchTopFivePosts: function () {
+
+
+  //取得报名一览
+  fetchTopFivePosts: function (option) {
+
     var self = this;
-    //取置顶的文章
-    console.log("URL地址" + api.foodballEventList());
+    var data = {
+      "userInfo":{
+        "userId": this.data.openid
+        }
+    }
+
+    var url = null;
+
+    if (option){
+      url = api.foodballCreateEventList();
+}else{
+      url = api.foodballProposerEventList();
+    }
     wxRequest
-      .postRequest(api.foodballEventList())
+      .postRequest(url, data)
       .then(response => {
-        console.log("response.responseCode : " + response.data.responseCode)
         if ("OK" == response.data.responseCode) {
-          console.log("@@@@@@@@@@@@@@@@@@ ")
           self.setData({
             postsList: response.data.result.eventList,
             displaySwiper: true
-          },
-            console.log("test^^^^^^^^^^^^ " + response.data.result.eventList));
+          });
         } else {
           self.setData({
             displaySwiper: false,
             displayHeader: true
           });
         }
-        
       })
-      .then(response => {
-        self.fetchPostsData(self.data);
-      })
-      .catch(function () {
-        self.setData({
-          showerror: true,
-          floatDisplay: false
-        });
-      })
-      .finally(function () {
-        console.log(response);
-      });
   },
-  //获取文章列表数据
-  fetchPostsData1: function (data) {
-    var self = this;
-    if (!data)
-      data = {};
-    if (!data.page)
-      data.page = 1;
-    if (!data.categories)
-      data.categories = 0;
-    if (data.page === 1) {
-      self.setData({
-        postsList: []
-      });
-    };
-    wx.showLoading({
-      title: '正在加载',
-      mask: true
-    });
-    wxRequest
-      .getRequest(api.getPosts(data))
-      .then(response => {
-        if (response.statusCode === 200) {
-          if (response.data.length < 6) {
-            self.setData({
-              isLastPage: true
-            });
-          }
-          self.setData({
-            floatDisplay: true,
-            showallDisplay: true,
-            postsList: self
-              .data
-              .postsList
-              .concat(response.data.map((item) => {
-                item.date = util.cutstr(item.date, 10, 1);
-                if (item.thumbnail) {
-                  if (item.thumbnail.indexOf('www.qipalin.com') > 0) {
-                    item.thumbnail = config.getDomain + '/wp-content/themes/begin/timthumb.php?src=' + item.thumbnail
-                  } else {
-                    item.thumbnail + '?imageView2/0/w/100/h/75';
-                  }
-                } else {
-                  item.thumbnail = '../../images/logo-100x75.png';
-                }
-                console.log("ceshi" + item);
-                return item;
-              }))
-          });
-        } else {
-          if (response.data.code == "rest_post_invalid_page_number") {
-            self.setData({
-              isLastPage: true
-            });
-            wx.showToast({
-              title: '没有更多内容',
-              mask: false,
-              duration: 1500
-            });
-          } else {
-            wx.showToast({
-              title: response.data.message,
-              duration: 1500
-            })
-          }
-        }
-      })
-      .catch(function (response) {
-        if (data.page == 1) {
-          self.setData({
-            showerror: true,
-            floatDisplay: false
-          });
-        } else {
-          wx.showModal({
-            title: '加载失败',
-            content: '加载数据失败,请重试.',
-            showCancel: false
-          });
-          self.setData({
-            page: data.page - 1
-          });
-        }
-      })
-      .finally(function (response) {
-        wx.hideLoading();
-        wx.hideNavigationBarLoading()
-      });
-  },
+
+  //报名详细画面
   detial: function (e) {
     wx.navigateTo({
       url: '/pages/detial/detial?id=' + e.target.dataset.id
     });
-  },
-  //加载分页
-  loadMore: function (e) {
-    var self = this;
-    if (!self.data.isLastPage) {
-      self.setData({
-        page: self.data.page + 1
-      });
-      this.fetchPostsData(self.data);
-    } else {
-      wx.showToast({
-        title: '没有更多内容',
-        mask: false,
-        duration: 1000
-      });
-    }
-  },
-  redictDetail: function (e) {
-    var id = e.currentTarget.id,
-      url = '../detail/detail?id=' + id;
-    wx.navigateTo({
-      url: url
-    })
   },
     //下拉刷新
   onPullDownRefresh: function () {
@@ -209,5 +103,30 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
     }, 1500);
+  },
+
+  //切换导航按钮
+  navbtn(event) {
+    const index = event.currentTarget.dataset.id;
+    const that = this;
+    if (index == '1') {
+      that.setData({
+        select: 'create',
+      })
+    } else {
+      that.setData({
+        select: '',
+      })
+    }
+    that.getList();
+  },
+  //获取列表
+  getList() {
+    const that = this;
+    if (that.data.select == 'create') {
+      that.fetchTopFivePosts(true);
+    } else {
+      that.fetchTopFivePosts(false);
+    }
   },
 })

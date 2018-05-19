@@ -1,10 +1,93 @@
-<!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+  <view class="section">
+		<view class="section-title">
+      报名详情
+    </view>
+    <view class="menu-item" bindtap='displayControl' id="1">
+      <view class="menu-text">
+        2018/05/01 周六 上午 报名10人
+      </view>
+      <view class="m-t-10 text" style="{{displayDetil1 ? '': 'display: none'}}">
+        <view>
+          No.1:
+          <image class="list-avatar" src="{{detail.avatar}}"></image>
+          测试名1
+        </view>
+        <view>
+          No.2:
+          <image class="list-avatar" src="{{detail.avatar2}}"></image>
+          测试名2
+        </view>
+        <view>
+          No.3:
+          <image class="list-avatar" src="{{detail.avatar3}}"></image>
+          测试名3
+        </view>
+      </view>
+    </view>
+    <view class="menu-item" bindtap='displayControl'  id="2">
+      <view class="menu-text" >
+        2018/05/01 周六 下午 报名8人
+      </view>
+      <view class="m-t-10 text" style="{{displayDetil2 ? '': 'display: none'}}">
+        <view>
+          No.1:
+          <image class="list-avatar" src="{{detail.avatar}}"></image>
+          测试名1
+        </view>
+        <view>
+          No.2:
+          <image class="list-avatar" src="{{detail.avatar2}}"></image>
+          测试名2
+        </view>
+        <view>
+          No.3:
+          <image class="list-avatar" src="{{detail.avatar3}}"></image>
+          测试名3
+        </view>
+      </view>
+    </view>
+    <view class="menu-item" bindtap='displayControl'  id="3">
+      <view class="menu-text">
+        2018/05/02 周日 上午 报名6人
+      </view>
+      <view class="m-t-10 text" style="{{displayDetil3 ? '': 'display: none'}}">
+        <view>
+          No.1:
+          <image class="list-avatar" src="{{detail.avatar}}"></image>
+          测试名1
+        </view>
+        <view>
+          No.2:
+          <image class="list-avatar" src="{{detail.avatar2}}"></image>
+          测试名2
+        </view>
+        <view>
+          No.3:
+          <image class="list-avatar" src="{{detail.avatar3}}"></image>
+          测试名3
+        </view>
+      </view>
+    </view>
+    <view class="menu-item" bindtap='displayControl'  id="4">
+      <view class="menu-text">
+        2018/05/02 周日 下午 报名5人
+      </view>
+      <view class="m-t-10 text" style="{{displayDetil4 ? '': 'display: none'}}">
+        <view>
+          No.1:
+          <image class="list-avatar" src="{{detail.avatar}}"></image>
+          测试名1
+        </view>
+        <view>
+          No.2:
+          <image class="list-avatar" src="{{detail.avatar2}}"></image>
+          测试名2
+        </view>
+        <view>
+          No.3:
+          <image class="list-avatar" src="{{detail.avatar3}}"></image>
+          测试名3
+        </view>
+      </view>
+    </view>
+	</view>

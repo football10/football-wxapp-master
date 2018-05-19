@@ -1,6 +1,8 @@
 <view class="container">
-  <view class='btns'>
-    <view class="nav_btn {{select == 'all' ? 'selected' : ''}}" bindtap="navbtn" data-id='1'>我创建的</view>
-    <view class="nav_btn {{select == 'all' ? '' : 'selected'}}" bindtap="navbtn" data-id='2'>我参与的</view>
-  </view> 
+  <view class="menu-item">
+    <view class="menu-text" style='text-align:center; '>
+      <image class="list-avatar" src="{{avatarUrl}}"></image>
+      <view><text>{{nickName}}</text></view>
+    </view>
+  </view>
 </view>

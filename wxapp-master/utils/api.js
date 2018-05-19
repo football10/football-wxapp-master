@@ -142,21 +142,12 @@ export default {
     return HOST_URI_WATCH_LIFE_JSON + "post/addpageview/" + id;
   },
 
-  //获取用户openid
-  getOpenidUrl(id) {
-    var url = HOST_URI_WATCH_LIFE_JSON;
-    url += "weixin/getopenid";
-    return url;
-  },
   //点赞
   postLikeUrl() {
     return HOST_URI_WATCH_LIFE_JSON + "post/like";
   },
 
-//报名
-  postSignUpUrl() {
-    return HOST_URI_WATCH_LIFE_JSON + "post/signup";
-  },
+
 
   postDelSignUpUrl(){
     return HOST_URI_WATCH_LIFE_JSON + "post/delsignup";
@@ -197,8 +188,31 @@ export default {
     return HOST_FOOTBALL_URI + "json";
   },
 
-  // 获取报名一览
-  foodballEventList() {
-    return HOST_FOOTBALL_URI + 'event/getEventList';
+  // 获取我参与活动的一览
+  foodballProposerEventList() {
+    return HOST_FOOTBALL_URI + 'event/getProposerEventList';
+  },
+
+  // 获取我报名活动的一览
+  foodballCreateEventList() {
+    return HOST_FOOTBALL_URI + 'event/getCreateEventList';
+  },
+
+  // 获取报名详细
+  foodballEventDetail() {
+    return HOST_FOOTBALL_URI + 'event/getEventDetail';
+  },
+
+  //创建报名
+  createFoodballEvent() {
+    return HOST_FOOTBALL_URI + 'event/createEvent';
+  },
+  //报名
+  postSignUpUrl() {
+    return HOST_FOOTBALL_URI + "event/proposerEvent";
+  },
+  //获取用户openid
+  getOpenidUrl(code) {
+    return HOST_FOOTBALL_URI + 'common/getOpenId?code=' + code;
   },
 };

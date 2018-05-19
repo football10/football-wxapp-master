@@ -41,3 +41,10 @@
     margin-top: 8pt;
     margin-right: 5px;
 }
+
+.list-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-left: 5px;
+}

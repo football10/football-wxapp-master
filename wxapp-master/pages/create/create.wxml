@@ -10,8 +10,8 @@
               <view class="menu-item">
                   <image class="menu-icon" src="/image/about.png"></image>
                   <view class="menu-text">
-                    <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
-                        <text>{{array[index]}}</text>
+                    <picker mode="selector" range="{{eventKbn}}" value="{{eventKbn_index}}" bindchange="listenerPickerSelected">
+                        <text>{{eventKbn[eventKbn_index]}}</text>
                     </picker>
                   </view>
               </view>
@@ -32,71 +32,71 @@
                               <text class="vm m-l-10" >{{startDate}}</text>
                               <view class="hide">
                                   <input value="{{startDate}}" disabled="true" name="startDate"></input>
-                              </view>                 
-
+                              </view> 
                   </picker>
-                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
-                              <text class="vm m-l-10">{{startTime}}</text>
-                              <view class="hide">
-                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
-                      </view>
+                  <picker style="float: left;margin-right: 15px;"      bindchange="changeMultiPicker" mode = "multiSelector" value="{{multiIndex}}" range="{{multiArray}}">
+                    <view class="vm m-l-10">
+                    {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}{{multiArray[2][multiIndex[2]]}}
+                    </view>
                   </picker>
                   <view style="float: right;">
-                    <button type="primary" size="mini" bindtap="insertbeixuan" style="{{display == '3' ? 'display: none': ''}}">备选日期</button> 
+                    <button type="primary" size="mini" bindtap="insertbeixuan" style="{{display == '3' ? 'display: none': ''}}">添加</button> 
                   </view>
                 </view>
 
-                <view id='beixun1' class="menu-text" style="{{display >= '1' ? '': 'display: none'}}">
-                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                <view id='beixun1' class="menu-text" style="{{display >= '1' ? 'clear:both': 'display: none'}}">
+                  <picker style="float: left;" mode="date" value="{{startDate1}}" start="" end="" bindchange="bindStartDateChange1">
                           <image class="menu-icon" src="/image/time.png"></image>
-                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <text class="vm m-l-10" >{{startDate1}}</text>
                               <view class="hide">
-                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
-                              </view>                 
-
+                                  <input value="{{startDate1}}" disabled="true" name="startDate1"></input>
+                              </view> 
                   </picker>
-                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
-                              <text class="vm m-l-10">{{startTime}}</text>
-                              <view class="hide">
-                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
-                      </view>
+                  <picker style="float: left;margin-right: 15px;"      bindchange="changeMultiPicker1" mode = "multiSelector" value="{{multiIndex1}}" range="{{multiArray1}}">
+                    <view class="vm m-l-10">
+                    {{multiArray1[0][multiIndex1[0]]}} {{multiArray1[1][multiIndex1[1]]}}{{multiArray1[2][multiIndex1[2]]}}
+                    </view>
                   </picker>
+                  <view style="float: right;">
+                    <button type="primary" size="mini" bindtap="delbeixuan" style="{{display == '1' ? '': 'display: none'}}">删除</button> 
+                  </view>
                 </view>
 
-                 <view id='beixun2' class="menu-text" style="{{display >= '2' ? '': 'display: none'}}">
-                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                 <view id='beixun2' class="menu-text" style="{{display >= '2' ? 'clear:both': 'display: none'}}">
+                 <picker style="float: left;" mode="date" value="{{startDate2}}" start="" end="" bindchange="bindStartDateChange2">
                           <image class="menu-icon" src="/image/time.png"></image>
-                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <text class="vm m-l-10" >{{startDate2}}</text>
                               <view class="hide">
-                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
-                              </view>                 
-
+                                  <input value="{{startDate2}}" disabled="true" name="startDate2"></input>
+                              </view> 
                   </picker>
-                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
-                              <text class="vm m-l-10">{{startTime}}</text>
-                              <view class="hide">
-                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
-                      </view>
+                  <picker style="float: left;margin-right: 15px;"      bindchange="changeMultiPicker2" mode = "multiSelector" value="{{multiIndex2}}" range="{{multiArray2}}">
+                    <view class="vm m-l-10">
+                    {{multiArray2[0][multiIndex2[0]]}} {{multiArray2[1][multiIndex2[1]]}}{{multiArray2[2][multiIndex2[2]]}}
+                    </view>
                   </picker>
+                                    <view style="float: right;">
+                    <button type="primary" size="mini" bindtap="delbeixuan" style="{{display == '2' ? '': 'display: none'}}">删除</button> 
+                  </view>
                 </view>
 
-                 <view id='beixun3' class="menu-text" style="{{display >= '3' ? '': 'display: none'}}">
-                  <picker style="float: left;" mode="date" value="{{startDate}}" start="" end="" bindchange="bindStartDateChange">
+                 <view id='beixun3' class="menu-text" style="{{display >= '3' ? 'clear:both': 'display: none'}}">
+                  <picker style="float: left;" mode="date" value="{{startDate3}}" start="" end="" bindchange="bindStartDateChange3">
                           <image class="menu-icon" src="/image/time.png"></image>
-                              <text class="vm m-l-10" >{{startDate}}</text>
+                              <text class="vm m-l-10" >{{startDate3}}</text>
                               <view class="hide">
-                                  <input value="{{startDate}}" disabled="true" name="startDate"></input>
-                              </view>                 
-
+                                  <input value="{{startDate3}}" disabled="true" name="startDate3"></input>
+                              </view> 
                   </picker>
-                  <picker  style="float: left;margin-right: 15px;" mode="time" value="{{startTime}}" start="" end="" bindchange="bindStartTimeChange">
-                              <text class="vm m-l-10">{{startTime}}</text>
-                              <view class="hide">
-                                  <input value="{{startTime}}" disabled="true" name="startTime"></input>           
-                      </view>
+                  <picker style="float: left;margin-right: 15px;"      bindchange="changeMultiPicker3" mode = "multiSelector" value="{{multiIndex3}}" range="{{multiArray3}}">
+                    <view class="vm m-l-10">
+                    {{multiArray3[0][multiIndex3[0]]}} {{multiArray3[1][multiIndex3[1]]}}{{multiArray3[2][multiIndex3[2]]}}
+                    </view>
                   </picker>
+                  <view style="float: right;">
+                    <button type="primary" size="mini" bindtap="delbeixuan" style="{{display == '3' ? '': 'display: none'}}">删除</button> 
+                  </view>
                 </view>
-
               </view>
               <!--活动地址-->
               <view class="menu-item">
@@ -112,10 +112,29 @@
               <view class="menu-item">
                   <image class="menu-icon" src="/image/money.png"></image>
                   <view class="menu-text">
-                      <input bindinput="bindMoney" type="number" value="{{money}}" 
-                          name="money" placeholder="费用">
+                      <input bindinput="bindMoney" type="number" value="{{eventCost}}" 
+                          name="eventCost" placeholder="费用(可为空)">
                       </input>
                   </view>
+              </view>
+              <!--联系方式-->
+              <view class="menu-item">
+                  <image class="menu-icon" src="/image/tel.png"></image>
+                  <view class="menu-text">
+                      <input bindinput="bindTel" type="number" value="{{tel}}" 
+                          name="tel" placeholder="联系方式(可为空)">
+                      </input>
+                  </view>
+              </view>
+              <!--报名截止日期-->
+              <view class="menu-item">
+                  <picker style="float: left;" mode="date" value="{{deadlineDate}}" start="" end="" bindchange="bindDeadlineDateChange" >
+                          <image class="menu-icon" src="/image/secret.png"></image>
+                              <text class="menu-text" >{{deadlineDate}}</text>
+                              <view class="hide">
+                                  <input value="{{deadlineDate}}" disabled="true" name="deadlineDate" ></input>
+                              </view> 
+                  </picker>
               </view>
           </view>
       </view>
@@ -128,7 +147,7 @@
                       <text class="vm">活动备注</text>
                   </view>
                   <view class="m-t-5">
-                      <textarea bindinput="bindContent" value="{{content}}" placeholder="说点什么吧(可为空)"></textarea>
+                      <textarea bindinput="bindComment" value="{{comment}}" placeholder="说点什么吧(可为空)"></textarea>
                   </view>
               </view>            
           </view>

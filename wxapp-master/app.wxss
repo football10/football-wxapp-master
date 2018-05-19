@@ -166,6 +166,10 @@ body {
   padding: 25rpx 0;
 }
 
+.border-1px {
+  border-bottom: 1px solid #eee;
+}
+
 .menu-item:last-child {
   border: none;
 }

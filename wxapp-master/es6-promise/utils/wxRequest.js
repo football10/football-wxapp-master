@@ -34,7 +34,7 @@ function getRequest(url, data) {
     method: 'GET',
     data: data,
     header: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=UTF-8',
     }
   })
 }
@@ -51,27 +51,12 @@ function postRequest(url, data) {
     method: 'POST',
     data: data,
     header: {
-        "content-type": "application/json"
-    },
-  })
-}
-
-function postRequestAuth(url, data) {
-  var postRequest = wxPromisify(wx.request)
-  return postRequest({
-    url: url,
-    method: 'POST',
-    data: data,
-    header: {
-        "content-type": "application/json",
-       "Authorization": "Bearer " + wx.getStorageSync('token')
-        // "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMTguMjUuMTkuNDEiLCJpYXQiOjE1MTY3MTM5NjEsIm5iZiI6MTUxNjcxMzk2MSwiZXhwIjoxNTE3MzE4NzYxLCJkYXRhIjp7InVzZXIiOnsiaWQiOiI0In19fQ.oHC80AtdFoiQKYw3miyhpDeUK_UDsx7a5Xt8naog0Do"
+      "content-type": "application/json;charset=UTF-8",
     },
   })
 }
 
 export default {
   postRequest: postRequest,
-  postRequestAuth: postRequestAuth,
   getRequest: getRequest
 }

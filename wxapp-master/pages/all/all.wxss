@@ -138,3 +138,28 @@ list-type.scroll-view_H {
 .bg {
   background: whitesmoke
 }
+
+.btns {
+  display: flex;
+  height: 90rpx;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.btns .nav_btn {
+  flex-shrink: 0;
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background-color: #fff;
+  color: #333333;
+  font-size: 34rpx;
+  border-bottom: 4rpx solid #ffffff;
+}
+
+.btns .nav_btn.selected {
+border-bottom: 4rpx solid #36b9af;
+  color: #36b9af;
+}

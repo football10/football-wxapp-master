@@ -4,16 +4,53 @@ var avatars = [
 	'http://img.huizecdn.com/test/avatar3.jpg'
 ];
 var detial = {
-  'signupCount': '10',
-  'title': "测试足球报名活动",
-  'startDate': "2018/04/01",
-  'startTime': '上午9点30分',
-  'address': '东京都，江户川区 大岛球场',
-  'money': '20000',
-  'Note' :'周末大家来踢场球！',
-  'avatar': 'http://img.huizecdn.com/test/avatar1.jpg',
-    'avatar2': 'http://img.huizecdn.com/test/avatar2.jpg',
-    'avatar3': 'http://img.huizecdn.com/test/avatar3.jpg'
+  eventDetailInfo:{
+      eventId:'001',
+      eventName: '足球报名测试',
+      status: '报名中',
+      eventKbn: '训练',
+      deadlineDate: '',
+      PROPOSERUSERID: 'user12345',
+      eventDate1: '2018/05/01 上午10点00分',
+      eventDate2: '2018/05/02 上午',
+      eventDate3: '2018/05/02 下午',
+      eventDate4: '',
+      eventPlaceName: '江户川区小松川',
+      eventPlaceX: '35.6895',
+      eventPlaceY: '139.69169',
+      eventCost: '200000',
+      costUnit: '日元',
+      phoneNo: '000-0000-0000',
+      comment: 'test',
+    },
+  proposerUserCount:'3',
+  proposerUserList: [{
+    userId:'1',
+    icon: 'http://img.huizecdn.com/test/avatar1.jpg',
+    comment: 'test1',
+    selectEventDate1: 'true',
+    selectEventDate2: 'false',
+    selectEventDate3: 'false',
+    selectEventDate4: 'false'
+  },
+    {
+      userId: '002',
+      icon: 'http://img.huizecdn.com/test/avatar2.jpg',
+      comment: 'test2',
+      selectEventDate1: 'true',
+      selectEventDate2: 'false',
+      selectEventDate3: 'false',
+      selectEventDate4: 'false'
+    },
+    {
+      userId: '003',
+      icon: 'http://img.huizecdn.com/test/avatar3.jpg',
+      comment: 'test3',
+      selectEventDate1: 'true',
+      selectEventDate2: 'false',
+      selectEventDate3: 'false',
+      selectEventDate4: 'false'
+    }]
 };
 var tplBanner = {
 	'001': 'http://img.huizecdn.com/test/001.jpg',

@@ -1,8 +1,15 @@
 <view class="container bg">
     <!--置顶图片-->
-    <view id="red"  class="scroll-view-item_H bc_red">
+    <!-- <view id="red"  class="scroll-view-item_H bc_red">
         <image class="scroll-view-item-img" src="/image/zuqiuchang.jpg"></image>
-    </view>
+    </view> -->
+    <view class='btns'>
+      <view class="nav_btn {{select == 'create' ? 'selected' : ''}}" bindtap="navbtn" data-id='1'>我创建的
+      </view>
+      <view class="nav_btn {{select == 'create' ? '' : 'selected'}}" bindtap="navbtn" data-id='2'>我参与的
+      </view>
+    </view> 
+
     <view class="section bg">    
         <view class="list-box clearfix" wx:for="{{postsList}}">
         <view class="list-item">
@@ -16,7 +23,7 @@
             <view class="list-time fz-12">
                 <image class="list-icon vm" src="/image/time.png"></image>
                 <view class="list-icon-text vm">
-                  {{item.eventDate}}
+                  {{item.eventDate1}}
                 </view>
             </view>
             <view class="list-time fz-12">

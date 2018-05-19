@@ -5,73 +5,102 @@
 <view class="container">
 	<view class="section">
     <checkbox-group>
+      <view class="menu-item">
+        <view class="menu-text">
+          <text>活动分类：</text>
+          <text>{{detail.eventKbn}}</text>
+        </view>
+      </view>
+      <view class="menu-item">
+        <view class="menu-text">
+          <text>备选时间1：</text>
+          <text>{{detail.eventDate1}}</text>
+          <checkbox  value="key1" checked="true"class='checkbox-date'/>
+        </view>
+      </view>
+      <view class="menu-item" style="{{eventDate2Flg ? 'display: none': ''}}">
+        <view class="menu-text">
+          <text>备选时间2：</text>
+          <text>{{detail.eventDate2}}</text>
+          <checkbox  value="key2" class='checkbox-date'/>
+        </view>
+      </view>
+      <view class="menu-item" style="{{eventDate3Flg ? 'display: none': ''}}">
+        <view class="menu-text">
+          <text>备选时间3：</text>
+          <text>{{detail.eventDate3}}</text>
+          <checkbox  value="key3" class='checkbox-date'/>
+        </view>
+      </view>
+      <view class="menu-item" style="{{eventDate4Flg ? 'display: none': ''}}">
+        <view class="menu-text">
+          <text>备选时间4：</text>
+          <text>{{detail.eventDate4}}</text>
+          <checkbox  value="key4" class='checkbox-date'/>
+        </view>
+      </view>
+    <view class="menu-item">
+      <view class="menu-text">
+      <text>活动地址：</text>
+        <text  bindtap="openLocation">{{detail.eventPlaceName}}</text>
+      </view>
+    </view>
 		<view class="menu-item">
-            <view class="menu-text">
-              <text>备选时间1：</text>
-            	<text>{{detail.startDate}} {{detail.startTime}}</text>
-              <checkbox  value="key1" checked="true"class='checkbox-date'/>
-            </view>
+      <view class="menu-text">
+        <text>活动费用：</text>
+        <text>{{detail.eventCost}}</text>
+      </view>
     </view>
-    		<view class="menu-item">
-            <view class="menu-text">
-              <text>备选时间2：</text>
-            	<text>{{detail.startDate}} {{detail.startTime}}</text>
-              <checkbox  value="key2" class='checkbox-date'/>
-            </view>
+    <view class="menu-item">
+      <view class="menu-text">
+        <text>联系方式：</text>
+        <text>{{detail.phoneNo}}</text>
+      </view>
     </view>
-    		<view class="menu-item">
-            <view class="menu-text">
-              <text>备选时间3：</text>
-            	<text>{{detail.startDate}} {{detail.startTime}}</text>
-              <checkbox  value="key3" class='checkbox-date'/>
-            </view>
+    <view class="menu-item">
+      <view class="menu-text">
+        <text>报名截止日期：</text>
+        <text>{{detail.phoneNo}}</text>
+      </view>
     </view>
-    		<view class="menu-item">
-            <view class="menu-text">
-              <text>备选时间4：</text>
-            	<text>{{detail.startDate}} {{detail.startTime}}</text>
-              <checkbox  value="key4" class='checkbox-date'/>
-            </view>
-    </view>
-		<view class="menu-item">
-            <view class="menu-text">
-            <text>活动地址：</text>
-            	<text  bindtap="openLocation">{{detail.address}}</text>
-            </view>
-    </view>
-    </checkbox-group>  
-		<view class="menu-item">
-            <view class="menu-text">
-              <text>活动费用：</text>
-            	<text  bindtap="openLocation">{{detail.money}}</text>
-            </view>
-    </view>
+   </checkbox-group>  
 	</view>
+
 	<view class="section">
 		<view class="section-title">活动备注</view>
 		<view class="m-t-10 text">
-      <text>{{detail.Note}}</text>
+      <text>{{detail.comment}}</text>
 		</view>
 	</view>
   <view class="section">
-		<view class="section-title">
+		<view class="section-title" bindtap="regDetial" data-id="1">
       报名记录(点击查看详情)
     </view>
-    <!--<view class="list-box clearfix" wx:for="{{postsList}}">-->
-      <view class="m-t-10 text">
-        <image class="list-avatar" src="{{detail.avatar}}"></image>
-        <image class="list-avatar" src="{{detail.avatar2}}"></image>
-        <image class="list-avatar" src="{{detail.avatar3}}"></image>
+    <view class="list-box clearfix">
+      <view class="m-t-10 text" bindtap="regDetial" data-id="1">
+       <block  wx:for="{{eventUserList}}">
+        <image class="list-avatar" src="{{item.icon}}"></image>
+        </block >
       </view>
-      <view class="list-layer"  bindtap="regDetial" data-id="1"></view>
+    </view>
 	</view>
 
 	<view class="section">
     <block wx:if="{{isSignUp}}">
       <button type="primary" bindtap="unJoin">取消报名</button>
+      <view class = "border-1px"></view>
+      <button type="primary" bindtap="unJoin">重新报名</button>
+            <view class = "border-1px"></view>
     </block>
     <block wx:else>
       <button type="primary" bindtap="join">我要报名</button>
+      <view class = "border-1px"></view>
+    </block>
+    <block wx:if="{{isProposerUser}}">
+      <button type="primary" bindtap="unJoin">删除活动</button>
+      <view class = "border-1px"></view>
+      <button type="primary" bindtap="unJoin">编辑活动</button>
+      <view class = "border-1px"></view>
     </block>
 	</view>
 </view>
