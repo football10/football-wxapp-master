@@ -1,4 +1,5 @@
 import api from '../../utils/api'
+import config from '../../utils/config'
 import util from '../../utils/util'
 import auth from '../../utils/auth'
 import wxParse from '../../wxParse/wxParse'
@@ -53,6 +54,7 @@ Page({
         eventDate4Flg: false,
     },
     onLoad: function (options) {
+      console.log("分享到群以后回掉！！！！！！")
         this.fetchDetailData(options.id);
         console.log("******user_login******* : " + this.user_login);
         var self = this;
@@ -124,7 +126,7 @@ Page({
         this.ShowHideMenu();
         return {
             title: config.getWebsiteName,
-            path: 'pages/detail/detail?id=' + this.data.detail.id,
+            path: '/pages/detial/detial?id=' + this.data.detail.eventId,
             success: function (res) {
                 // 转发成功
             },
